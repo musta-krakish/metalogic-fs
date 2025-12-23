@@ -1,0 +1,12 @@
+{
+  "directories": [
+    { 
+      "name": "GOSU_TSD", 
+      "path": "/data/gosu" 
+    },
+    { 
+      "name": "LIS", 
+      "path": "/data/lis" 
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    volumes:
+      # Формат: <Путь на сервере>:<Путь внутри контейнера>
+      - /home/administrator/BridgeAPI/data:/data/gosu
+      - /home/administrator/LisUpgraded/static:/data/lis
+      # Прокидываем конфиг, чтобы его можно было менять без пересборки образа
+      - ./config.json:/app/config.json
+    restart: always
+    user: "root"
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.client
+    ports:
+      - "5210:80" 
+    depends_on:
+      - backend
+    restart: always
